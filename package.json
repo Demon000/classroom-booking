@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/Demon000/classroom-booking#readme",
   "dependencies": {
+    "express": "^4.15.2",
     "nodemon": "^1.11.0"
   }
 }
