@@ -1,0 +1,23 @@
+{
+  "name": "classroom-booking",
+  "version": "1.0.0",
+  "description": "A simple classroom booking app.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Demon000/classroom-booking.git"
+  },
+  "keywords": [
+    "classroom",
+    "booking"
+  ],
+  "author": "Demon000",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Demon000/classroom-booking/issues"
+  },
+  "homepage": "https://github.com/Demon000/classroom-booking#readme"
+}
