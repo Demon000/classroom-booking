@@ -1,3 +1,26 @@
+.labeled-input {
+    display: inline-block;
+    vertical-align: top;
+
+    margin: 0 16px 0 0;
+}
+.labeled-input > label {
+    line-height: 16px;
+    font-size: 12px;
+
+    display: block;
+
+    margin-bottom: 4px;
+}
+.labeled-input input {
+    height: 28px;
+    line-height: 28px;
+
+    font-size: 14px;
+
+    display: block;
+}
+
 #app-bar {
     width: 100%;
     height: 64px;
