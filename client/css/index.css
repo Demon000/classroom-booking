@@ -38,3 +38,25 @@
     font-weight: 400;
     color: #FFF;
 }
+#nav-bar {
+    width: 100%;
+
+    padding: 32px;
+
+    background: #009688;
+}
+#nav-bar .labeled-input label {
+    color: rgba(255, 255, 255, 0.54);
+}
+#nav-bar .labeled-input input {
+    min-width: 256px;
+
+    color: rgba(255, 255, 255, 0.87);
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.26);
+
+    transition: border 0.25s ease-out;
+}
+#nav-bar .labeled-input input:focus {
+    border-bottom: 2px solid rgba(255, 255, 255, 1);
+}
