@@ -19,6 +19,11 @@
             }
             _listeners[name].push(f);
         };
+        e.remove = function(name, f) {
+            _listeners[name].filter(function(l) {
+                return l != f;
+            });
+        };
         e.listeners = function(name) {
             return _listeners[name];
         };
