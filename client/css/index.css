@@ -1,8 +1,6 @@
 .labeled-input {
     display: inline-block;
     vertical-align: top;
-
-    margin: 0 24px 0 0;
 }
 .labeled-input > label {
     line-height: 16px;
@@ -44,6 +42,9 @@
     padding: 32px;
 
     background: #009688;
+}
+#nav-bar .labeled-input {
+    margin: 0 24px 0 0;
 }
 #nav-bar .labeled-input label {
     color: rgba(255, 255, 255, 0.54);
