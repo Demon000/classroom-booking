@@ -13,3 +13,12 @@ a {
     
     cursor: pointer;
 }
+input {
+    border: 0;
+
+    box-shadow: none;
+    background: transparent;
+}
+input:focus {
+    outline: 0;
+}
