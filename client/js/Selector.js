@@ -20,8 +20,7 @@
         };
 
         o.options.forEach(function(op) {
-            var el = createElement({
-                type: 'div',
+            var el = createElement('div', {
                 content: op
             });
             el.addEventListener('click', function() {
