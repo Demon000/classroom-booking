@@ -61,3 +61,33 @@
 #nav-bar .labeled-input input:focus {
     border-bottom: 2px solid rgba(255, 255, 255, 1);
 }
+#nav-bar #rooms {
+    color: rgba(255, 255, 255, 0.87);
+    line-height: 20px;
+    font-size: 16px;
+
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#nav-bar #rooms > * {
+    display: inline-block;
+
+    padding: 4px 12px;
+    margin: 0 6px;
+
+    border-radius: 14px;
+
+    background: rgba(255, 255, 255, 0.1);
+
+    cursor: pointer;
+
+    transition: background 0.1s ease-out;
+}
+#nav-bar #rooms > *:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+#nav-bar #rooms > *.active {
+    background: rgba(255, 255, 255, 0.3);
+}
