@@ -6,3 +6,7 @@ var dateSelector = new Calendar({
         w : ['L', 'M', 'M', 'J', 'V', 'S', 'D']
     }
 });
+var roomSelector = new Selector({
+    container: document.querySelector('#rooms'),
+    options: ['25', '31', '7']
+});
