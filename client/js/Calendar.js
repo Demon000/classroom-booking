@@ -43,11 +43,13 @@
             return date;
         };
         c.setDate = function(newDate) {
-            var oldDate = date;
-            date = newDate;
-            var s = date.day + '/' + (date.month + 1) + '/' + date.year;
-            input.value = s;
-            c.emit('dateChange', oldDate, newDate);
+            if(!equals(newDate, date)) {
+                var oldDate = date;
+                date = newDate;
+                var s = date.day + '/' + (date.month + 1) + '/' + date.year;
+                input.value = s;
+                c.emit('dateChange', oldDate, newDate);
+            }
         };
 
         c.getView = function() {
