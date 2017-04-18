@@ -1,4 +1,8 @@
 var app = {
+    loaded: {
+        rooms: false,
+        events: false
+    },
     dateSelector: new Calendar({
         input: document.querySelector('#date'),
         language: {
