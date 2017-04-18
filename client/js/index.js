@@ -39,7 +39,14 @@ var app = {
               });
           }
     },
-    init: function() {},
+    init: function() {
+        app.dateSelector.on('dateChange', function() {
+            console.log('dateChange event');
+        });
+        app.roomSelector.on('activeChange', function() {
+            console.log('activeChange event');
+        });
+    },
     load: function() {
         app.fetch.rooms(function(err, res) {
             if(!err) {
