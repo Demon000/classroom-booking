@@ -57,3 +57,5 @@ var app = {
         duration: 10000
     })
 };
+
+app.load();
