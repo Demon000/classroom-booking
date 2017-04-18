@@ -5,10 +5,22 @@
         w : ['M', 'T', 'W', 'T', 'F', 'S', 'S']
     };
 
-    function equals(a, b) {
-        var r = false;
-        if(a.year == b.year && a.month == b.month && a.day == b.day) {
-            r = true;
+    function compare(a, b) {
+        var r = 0;
+        if(!a.year) {
+            r = 1;
+        } else if(!b.year) {
+            r = -1;
+        } else if(a.year < b.year ||
+            a.year == b.year && a.month < b.month ||
+            a.year == b.year && a.month == b.month && a.day < b.day)
+        {
+                r = -1;
+        } else if(a.year > b.year ||
+            a.year == b.year && a.month > b.month ||
+            a.year == b.year && a.month == b.month && a.day > b.day)
+        {
+                r = 1;
         }
         return r;
     }
@@ -43,7 +55,7 @@
             return date;
         };
         c.setDate = function(newDate) {
-            if(!equals(newDate, date)) {
+            if(compare(newDate, date)) {
                 var oldDate = date;
                 date = newDate;
                 var s = date.day + '/' + (date.month + 1) + '/' + date.year;
@@ -193,17 +205,17 @@
                 el.addEventListener('click', function() {
                     c.setDate(d);
                 });
-                if(equals(d, today)) {
+                if(!compare(d, today)) {
                     el.classList.add('today');
                 }
-                if(equals(d, date)) {
+                if(!compare(d, date)) {
                     el.classList.add('date');
                 }
                 c.on('dateChange', function(oldDate, newDate) {
-                    if(equals(d, oldDate)) {
+                    if(!compare(d, oldDate)) {
                         el.classList.remove('date');
                     }
-                    if(equals(d, newDate)) {
+                    if(!compare(d, newDate)) {
                         el.classList.add('date');
                     }
                 });
