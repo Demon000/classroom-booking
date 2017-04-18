@@ -23,6 +23,7 @@ var app = {
               });
           }
     },
+    init: function() {},
     load: function() {
         app.fetch.rooms(function(err, res) {
             if(!err) {
