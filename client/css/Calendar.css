@@ -65,7 +65,7 @@
     transition: all 0.1s ease-out;
 }
 .calendar .meta .nav .mdi:hover {
-    background: rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .calendar .header,
@@ -108,7 +108,7 @@
     cursor: initial;
 }
 .calendar .days > *:hover {
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.1);
 }
 .calendar .days > .blank:hover {
     background: transparent;
