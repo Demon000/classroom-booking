@@ -77,8 +77,8 @@
     
     background: #fff;
 }
-.calendar .header > *,
-.calendar .days > * {
+.calendar .header *,
+.calendar .days * {
     width: 32px;
     height: 32px;
     line-height: 32px;
@@ -101,28 +101,28 @@
     
     color: rgba(0, 0, 0, 0.87);
 }
-.calendar .days > * {
+.calendar .days * {
     cursor: pointer;
 }
 .calendar .days .blank,
 .calendar .days .past {
     cursor: initial;
 }
-.calendar .days > *:hover {
+.calendar .days *:hover {
     background: rgba(0, 0, 0, 0.1);
 }
-.calendar .days > .blank:hover,
-.calendar .days > .past:hover {
+.calendar .days .blank:hover,
+.calendar .days .past:hover {
     background: transparent;
 }
-.calendar .days > .past {
+.calendar .days .past {
     color: rgba(0, 0, 0, 0.27);
 }
-.calendar .days > .today {
+.calendar .days .today {
     color: #009688;
     font-weight: bold;
 }
-.calendar .days > .date {
+.calendar .days .date {
     color: #fff;
     
     background: #009688;
