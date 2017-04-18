@@ -1,3 +1,4 @@
+var request = superagent;
 var app = {
     loaded: {
         rooms: false,
