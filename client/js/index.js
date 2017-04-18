@@ -10,3 +10,8 @@ var roomSelector = new Selector({
     container: document.querySelector('#rooms'),
     options: ['25', '31', '7']
 });
+var error = new Erroneous({
+    container: document.querySelector('#error'),
+    timed: true,
+    duration: 10000
+});
