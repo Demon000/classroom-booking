@@ -20,8 +20,7 @@
         s.getOptions = function() {
             return options;
         };
-
-        o.options.forEach(function(op) {
+        s.addOption = function(op) {
             var el = createElement('div', {
                 content: op
             });
@@ -38,7 +37,9 @@
             });
             options[op] = el;
             container.appendChild(el);
-        });
+        };
+
+        o.options.forEach(s.addOption);
 
         if(!o.default) {
             o.default = o.options[0];
