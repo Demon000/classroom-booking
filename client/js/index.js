@@ -27,6 +27,11 @@ var app = {
     load: function() {
         app.fetch.rooms(function(err, res) {
             if(!err) {
+                var rooms = res.body;
+                app.loaded.rooms = true;
+                app.roomSelector.setOptions(rooms);
+                app.roomSelector.setActive(rooms[0]);
+
                 if(app.isLoaded()) {
                     app.init();
                 }
