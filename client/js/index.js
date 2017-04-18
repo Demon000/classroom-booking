@@ -4,6 +4,16 @@ var app = {
         rooms: false,
         events: false
     },
+    isLoaded: function() {
+        var r = true;
+        for(var i in app.loaded) {
+            if(!app.loaded[i]) {
+                r = false;
+                break;
+            }
+        }
+        return r;
+    },
     fetch: {
           rooms: function(cb) {
               request
