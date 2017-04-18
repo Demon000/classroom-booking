@@ -48,11 +48,11 @@
 
         if(o.options) {
             s.setOptions(o.options);
+            if(!o.default) {
+                o.default = o.options[0];
+            }
         }
 
-        if(!o.default) {
-            o.default = o.options[0];
-        }
         s.setActive(o.default);
     }
 
