@@ -1,8 +1,7 @@
 var request = superagent;
 var app = {
     loaded: {
-        rooms: false,
-        events: false
+        rooms: false
     },
     isLoaded: function() {
         var r = true;
