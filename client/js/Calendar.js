@@ -202,11 +202,16 @@
                     content: day,
                     parent: days
                 });
-                el.addEventListener('click', function() {
-                    c.setDate(d);
-                });
-                if(!compare(d, today)) {
+                var rel = compare(d, today);
+                if(rel == 0) {
                     el.classList.add('today');
+                }
+                if(rel == -1) {
+                    el.classList.add('past');
+                } else {
+                    el.addEventListener('click', function() {
+                        c.setDate(d);
+                    });
                 }
                 if(!compare(d, date)) {
                     el.classList.add('date');
