@@ -46,7 +46,9 @@
             ops.forEach(s.addOption);
         };
 
-        s.setOptions(o.options);
+        if(o.options) {
+            s.setOptions(o.options);
+        }
 
         if(!o.default) {
             o.default = o.options[0];
