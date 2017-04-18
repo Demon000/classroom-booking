@@ -4,6 +4,15 @@ var app = {
         rooms: false,
         events: false
     },
+    fetch: {
+          rooms: function(cb) {
+              request
+              .get('api/rooms')
+              .end(function(err, res) {
+                  cb(err, res);
+              });
+          }
+    },
     dateSelector: new Calendar({
         input: document.querySelector('#date'),
         language: {
