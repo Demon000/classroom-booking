@@ -23,6 +23,19 @@ var app = {
               });
           }
     },
+    load: function() {
+        app.fetch.rooms(function(err, res) {
+            if(!err) {
+               if(app.isLoaded()) {
+                   app.init();
+               } else {
+                   console.log('Not loaded yet');
+               }
+            } else {
+                console.log(err, res);
+            }
+        });
+    },
     dateSelector: new Calendar({
         input: document.querySelector('#date'),
         language: {
