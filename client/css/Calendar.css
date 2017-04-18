@@ -104,14 +104,19 @@
 .calendar .days > * {
     cursor: pointer;
 }
-.calendar .days .blank {
+.calendar .days .blank,
+.calendar .days .past {
     cursor: initial;
 }
 .calendar .days > *:hover {
     background: rgba(0, 0, 0, 0.1);
 }
-.calendar .days > .blank:hover {
+.calendar .days > .blank:hover,
+.calendar .days > .past:hover {
     background: transparent;
+}
+.calendar .days > .past {
+    color: rgba(0, 0, 0, 0.27);
 }
 .calendar .days > .today {
     color: #009688;
