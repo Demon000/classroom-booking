@@ -11,9 +11,11 @@
             return active;
         };
         s.setActive = function(op) {
-            var oldActive = active;
-            active = op;
-            s.emit('activeChange', oldActive, active);
+            if(op != active) {
+                var oldActive = active;
+                active = op;
+                s.emit('activeChange', oldActive, active);
+            }
         };
         s.getOptions = function() {
             return options;
