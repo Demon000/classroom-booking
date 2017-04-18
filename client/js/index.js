@@ -8,6 +8,7 @@ var app = {
         var r = true;
         for(var i in app.loaded) {
             if(!app.loaded[i]) {
+                console.log('app not loaded yet.');
                 r = false;
                 break;
             }
@@ -28,8 +29,6 @@ var app = {
             if(!err) {
                 if(app.isLoaded()) {
                     app.init();
-                } else {
-                    console.log('Not loaded yet');
                 }
             } else {
                 console.log(err, res);
