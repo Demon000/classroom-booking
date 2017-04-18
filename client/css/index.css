@@ -143,8 +143,9 @@
 
     color: rgb(0, 0, 0, 0.87);
     font-size: 0;
-
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+#main .event:nth-child(even) {
+    background: rgba(0, 0, 0, 0.025);
 }
 #main .event > * {
     display: inline-block;
@@ -171,4 +172,6 @@
 
     color: rgb(0, 0, 0, 0.54);
     font-weight: 500;
+
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
