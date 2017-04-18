@@ -106,7 +106,7 @@
 }
 .calendar .days .blank,
 .calendar .days .past {
-    cursor: initial;
+    cursor: default;
 }
 .calendar .days *:hover {
     background: rgba(0, 0, 0, 0.1);
