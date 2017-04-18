@@ -38,8 +38,15 @@
             options[op] = el;
             container.appendChild(el);
         };
+        s.setOptions = function(ops) {
+            while(container.lastChild) {
+                container.removeChild(container.lastChild);
+            }
+            options = {};
+            ops.forEach(s.addOption);
+        };
 
-        o.options.forEach(s.addOption);
+        s.setOptions(o.options);
 
         if(!o.default) {
             o.default = o.options[0];
