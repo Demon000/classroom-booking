@@ -32,11 +32,19 @@ var app = {
     },
     fetch: {
         rooms: function(cb) {
-          request
-          .get('api/rooms')
-          .end(function(err, res) {
-              cb(err, res);
-          });
+            request
+            .get('api/rooms')
+            .end(function(err, res) {
+                cb(err, res);
+            });
+        },
+        events: function(q, cb) {
+            request
+            .get('api/events')
+            .query(q)
+            .end(function(err, res) {
+                cb(err, res);
+            });
         }
     },
     init: function() {
