@@ -39,8 +39,8 @@
             container.appendChild(el);
         };
         s.setOptions = function(ops, ac) {
-            while(container.lastChild) {
-                container.removeChild(container.lastChild);
+            for(var i in options) {
+                container.removeChild(options[i]);
             }
             options = {};
             ops.forEach(s.addOption);
