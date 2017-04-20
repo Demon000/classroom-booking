@@ -17,19 +17,27 @@ var app = {
         duration: 10000
     }),
     get: {
-        rooms: function(cb) {
+        rooms: function(cbs, cbe) {
             request
             .get('api/rooms')
             .end(function(err, res) {
-                cb(err, res);
+                if(err && cbe) {
+                    cbe(err);
+                } else {
+                    cbs(res);
+                }
             });
         },
-        events: function(q, cb) {
+        events: function(q, cbs, cbe) {
             request
             .get('api/events')
             .query(q)
             .end(function(err, res) {
-                cb(err, res);
+                if(err && cbe) {
+                    cbe(err);
+                } else {
+                    cbs(res);
+                }
             });
         }
     },
@@ -42,15 +50,12 @@ var app = {
         });
     },
     load: function() {
-        app.get.rooms(function(err, res) {
-            if(!err) {
-                var rooms = res.body;
-                app.roomSelector.setOptions(rooms);
-                app.roomSelector.setActive(rooms[0]);
-
-            } else {
-                console.log(err, res);
-            }
+        app.get.rooms(function(res) {
+            var rooms = res.body;
+            app.roomSelector.setOptions(rooms);
+            app.roomSelector.setActive(rooms[0]);
+        }, function(err) {
+            console.log(err, res);
         });
     }
 };
