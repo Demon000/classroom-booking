@@ -53,7 +53,7 @@ var app = {
         app.get.rooms(function(rooms) {
             app.roomSelector.setOptions(rooms, rooms[0]);
         }, function(err) {
-            console.log(err, res);
+            console.log(err);
         });
     }
 };
