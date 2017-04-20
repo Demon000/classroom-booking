@@ -16,6 +16,7 @@ var app = {
         timed: true,
         duration: 10000
     }),
+    eventsContainer: document.querySelector('#events'),
     get: {
         rooms: function(cbs, cbe) {
             request
@@ -41,6 +42,38 @@ var app = {
             });
         }
     },
+    render: {
+        events: function(events) {
+            while(app.eventsContainer.lastChild) {
+                app.eventsContainer.removeChild(app.eventsContainer.lastChild);
+            }
+            events.forEach(function(event) {
+                var eventElement = createElement({
+                    type: 'div',
+                    class: 'event',
+                    parent: eventsContainer
+                });
+                createElement({
+                    type: 'div',
+                    class: 'hour',
+                    content: event.hour,
+                    parent: eventElement
+                });
+                createElement({
+                    type: 'div',
+                    class: 'name',
+                    content: event.name,
+                    parent: eventElement
+                });
+                createElement({
+                    type: 'div',
+                    class: 'description',
+                    content: event.description,
+                    parent: eventElement
+                });
+            });
+        }
+    },
     init: function() {
         app.dateSelector.on('dateChange', function() {
             console.log('dateChange event');
@@ -61,6 +94,7 @@ var app = {
                 day: date.day
             };
             app.get.events(q, function(events) {
+                app.render.events(events);
             }, function(err) {
                 console.log(err);
             });
