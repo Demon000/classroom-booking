@@ -12,7 +12,7 @@ const express = require('express');
 const router = express.Router();
 
 router.get('/rooms', (req, res, next) => {
-    var data = config.rooms;
+    let data = config.rooms;
     res.json(data);
 });
 
