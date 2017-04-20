@@ -52,6 +52,18 @@ var app = {
     load: function() {
         app.get.rooms(function(rooms) {
             app.roomSelector.setOptions(rooms, rooms[0]);
+            var room = app.roomSelector.getActive();
+            var date = app.dateSelector.getDate();
+            var q = {
+                room: room,
+                year: date.year,
+                month: date.month,
+                day: date.day
+            };
+            app.get.events(q, function(events) {
+            }, function(err) {
+                console.log(err);
+            });
         }, function(err) {
             console.log(err);
         });
