@@ -16,20 +16,6 @@ var app = {
         timed: true,
         duration: 10000
     }),
-    loaded: {
-        rooms: false
-    },
-    isLoaded: function() {
-        var r = true;
-        for(var i in app.loaded) {
-            if(!app.loaded[i]) {
-                console.log('app not loaded yet.');
-                r = false;
-                break;
-            }
-        }
-        return r;
-    },
     get: {
         rooms: function(cb) {
             request
@@ -59,13 +45,9 @@ var app = {
         app.get.rooms(function(err, res) {
             if(!err) {
                 var rooms = res.body;
-                app.loaded.rooms = true;
                 app.roomSelector.setOptions(rooms);
                 app.roomSelector.setActive(rooms[0]);
 
-                if(app.isLoaded()) {
-                    app.init();
-                }
             } else {
                 console.log(err, res);
             }
