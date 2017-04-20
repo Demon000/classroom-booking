@@ -38,22 +38,23 @@
             options[op] = el;
             container.appendChild(el);
         };
-        s.setOptions = function(ops) {
+        s.setOptions = function(ops, ac) {
             while(container.lastChild) {
                 container.removeChild(container.lastChild);
             }
             options = {};
             ops.forEach(s.addOption);
+            if(ac) {
+                s.setActive(ac);
+            }
         };
 
         if(o.options) {
-            s.setOptions(o.options);
             if(!o.default) {
                 o.default = o.options[0];
             }
+            s.setOptions(o.options, o.default);
         }
-
-        s.setActive(o.default);
     }
 
     window.Selector = Selector;
