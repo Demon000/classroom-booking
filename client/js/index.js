@@ -30,7 +30,7 @@ var app = {
         }
         return r;
     },
-    fetch: {
+    get: {
         rooms: function(cb) {
             request
             .get('api/rooms')
@@ -56,7 +56,7 @@ var app = {
         });
     },
     load: function() {
-        app.fetch.rooms(function(err, res) {
+        app.get.rooms(function(err, res) {
             if(!err) {
                 var rooms = res.body;
                 app.loaded.rooms = true;
