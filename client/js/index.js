@@ -48,25 +48,21 @@ var app = {
                 app.eventsContainer.removeChild(app.eventsContainer.lastChild);
             }
             events.forEach(function(event) {
-                var eventElement = createElement({
-                    type: 'div',
+                var eventElement = createElement('div', {
                     class: 'event',
                     parent: app.eventsContainer
                 });
-                createElement({
-                    type: 'div',
+                createElement('div', {
                     class: 'hour',
                     content: event.hour,
                     parent: eventElement
                 });
-                createElement({
-                    type: 'div',
+                createElement('div', {
                     class: 'name',
                     content: event.name,
                     parent: eventElement
                 });
-                createElement({
-                    type: 'div',
+                createElement('div', {
                     class: 'description',
                     content: event.description,
                     parent: eventElement
