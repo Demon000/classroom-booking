@@ -36,7 +36,7 @@ var app = {
                 if(err && cbe) {
                     cbe(err);
                 } else {
-                    cbs(res);
+                    cbs(res.body);
                 }
             });
         }
