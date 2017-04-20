@@ -90,6 +90,17 @@ var app = {
             }, function(err) {
                 console.log(err);
             });
+        },
+        selectedEvents: function(cb) {
+            var room = app.roomSelector.getActive();
+            var date = app.dateSelector.getDate();
+            var q = {
+                room: room,
+                year: date.year,
+                month: date.month,
+                day: date.day
+            };
+            app.load.events(q, cb);
         }
     },
     init: function() {
@@ -102,15 +113,7 @@ var app = {
     },
     preinit: function() {
         app.load.rooms(function() {
-            var room = app.roomSelector.getActive();
-            var date = app.dateSelector.getDate();
-            var q = {
-                room: room,
-                year: date.year,
-                month: date.month,
-                day: date.day
-            };
-            app.load.events(q, app.init);
+            app.load.selectedEvents(app.init);
         })
     }
 };
