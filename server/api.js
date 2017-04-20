@@ -17,20 +17,7 @@ router.get('/rooms', (req, res, next) => {
 });
 router.get('/events' , (req, res, next) => {
 	let q = req.query;
-	let view = db.get('events');
-	if(q.room) {
-		view.filter({room: q.room});
-	}
-	if(q.year) {
-		view.filter({year: q.year});
-	}
-	if(q.month) {
-		view.filter({month: q.month});
-	}
-	if(q.day) {
-		view.filter({day: q.day});
-	}
-	let data = view.value();
+	let data = db.get('events').filter(q).value();
 	console.log(q, data);
 	res.json(data);
 });
