@@ -51,7 +51,7 @@ var app = {
                 var eventElement = createElement({
                     type: 'div',
                     class: 'event',
-                    parent: eventsContainer
+                    parent: app.eventsContainer
                 });
                 createElement({
                     type: 'div',
