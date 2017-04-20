@@ -24,7 +24,7 @@ var app = {
                 if(err && cbe) {
                     cbe(err);
                 } else {
-                    cbs(res);
+                    cbs(res.body);
                 }
             });
         },
@@ -50,8 +50,7 @@ var app = {
         });
     },
     load: function() {
-        app.get.rooms(function(res) {
-            var rooms = res.body;
+        app.get.rooms(function(rooms) {
             app.roomSelector.setOptions(rooms);
             app.roomSelector.setActive(rooms[0]);
         }, function(err) {
