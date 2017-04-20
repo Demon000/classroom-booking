@@ -51,8 +51,7 @@ var app = {
     },
     load: function() {
         app.get.rooms(function(rooms) {
-            app.roomSelector.setOptions(rooms);
-            app.roomSelector.setActive(rooms[0]);
+            app.roomSelector.setOptions(rooms, rooms[0]);
         }, function(err) {
             console.log(err, res);
         });
