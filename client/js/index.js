@@ -104,6 +104,19 @@ var app = {
             console.log('activeChange event');
         });
     },
+    preinit: function() {
+        app.load.rooms(function() {
+            var room = app.roomSelector.getActive();
+            var date = app.dateSelector.getDate();
+            var q = {
+                room: room,
+                year: date.year,
+                month: date.month,
+                day: date.day
+            };
+            app.load.events(q, app.init);
+        })
+    }
 };
 
-app.load();
+app.preinit();
