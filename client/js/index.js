@@ -105,10 +105,10 @@ var app = {
     },
     init: function() {
         app.dateSelector.on('dateChange', function() {
-            console.log('dateChange event');
+            app.load.selectedEvents();
         });
         app.roomSelector.on('activeChange', function() {
-            console.log('activeChange event');
+            app.load.selectedEvents();
         });
     },
     preinit: function() {
