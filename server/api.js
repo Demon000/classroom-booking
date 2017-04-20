@@ -3,7 +3,7 @@
 const config = require('../config');
 
 const lowdb = require('lowdb');
-const db = lowdb('db.json');
+const db = lowdb(config.dbPath);
 
 const express = require('express');
 const router = express.Router();
