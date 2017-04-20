@@ -31,13 +31,13 @@ var app = {
         return r;
     },
     fetch: {
-          rooms: function(cb) {
-              request
-              .get('api/rooms')
-              .end(function(err, res) {
-                  cb(err, res);
-              });
-          }
+        rooms: function(cb) {
+          request
+          .get('api/rooms')
+          .end(function(err, res) {
+              cb(err, res);
+          });
+        }
     },
     init: function() {
         app.dateSelector.on('dateChange', function() {
