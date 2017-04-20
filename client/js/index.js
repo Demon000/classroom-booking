@@ -74,6 +74,28 @@ var app = {
             });
         }
     },
+    load: {
+        rooms: function(cb) {
+            app.get.rooms(function(rooms) {
+                app.roomSelector.setOptions(rooms, rooms[0]);
+                if(cb) {
+                    cb();
+                }
+            }, function(err) {
+                console.log(err);
+            });
+        },
+        events: function(q, cb) {
+            app.get.events(q, function(events) {
+                app.render.events(events);
+                if(cb) {
+                    cb();
+                }
+            }, function(err) {
+                console.log(err);
+            });
+        }
+    },
     init: function() {
         app.dateSelector.on('dateChange', function() {
             console.log('dateChange event');
@@ -82,26 +104,6 @@ var app = {
             console.log('activeChange event');
         });
     },
-    load: function() {
-        app.get.rooms(function(rooms) {
-            app.roomSelector.setOptions(rooms, rooms[0]);
-            var room = app.roomSelector.getActive();
-            var date = app.dateSelector.getDate();
-            var q = {
-                room: room,
-                year: date.year,
-                month: date.month,
-                day: date.day
-            };
-            app.get.events(q, function(events) {
-                app.render.events(events);
-            }, function(err) {
-                console.log(err);
-            });
-        }, function(err) {
-            console.log(err);
-        });
-    }
 };
 
 app.load();
