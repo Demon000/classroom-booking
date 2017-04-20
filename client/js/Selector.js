@@ -22,7 +22,8 @@
         };
         s.addOption = function(op) {
             var el = createElement('div', {
-                content: op
+                content: op,
+                parent: container
             });
             el.addEventListener('click', function() {
                 s.setActive(op);
@@ -36,7 +37,6 @@
                 }
             });
             options[op] = el;
-            container.appendChild(el);
         };
         s.setOptions = function(ops, ac) {
             for(var i in options) {
