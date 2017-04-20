@@ -137,6 +137,20 @@
 
     padding: 32px;
 }
+#events {
+    position: relative;
+}
+#events:empty::after {
+    content: 'Nu există programări pentru această dată.';
+
+    line-height: 48px;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+
+    color: rgb(0, 0, 0, 0.54);
+}
 #main .event {
     width:  100%;
     line-height: 48px;
