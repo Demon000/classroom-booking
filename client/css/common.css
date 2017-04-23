@@ -13,20 +13,16 @@ a {
     
     cursor: pointer;
 }
-input {
+input, button {
     border: 0;
+
+	font-family: inherit;
+    font-size: inherit;
+    color: inherit;
 
     box-shadow: none;
     background: transparent;
 }
-input:focus {
-    outline: 0;
-}
-button {
-    border: 0;
-
-    background: transparent;
-}
-button:focus {
-    outline: 0;
+input:focus, button:focus {
+	outline: 0;
 }
