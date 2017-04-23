@@ -81,6 +81,8 @@ button {
     transition: border 0.25s ease-out;
 }
 #nav-bar .labeled-input input:focus {
+    color: rgba(255, 255, 255, 1);
+
     border-bottom: 2px solid rgba(255, 255, 255, 1);
 }
 #nav-bar #rooms {
@@ -113,6 +115,8 @@ button {
     background: rgba(255, 255, 255, 0.2);
 }
 #nav-bar #rooms > *.active {
+    color: rgba(255, 255, 255, 1);
+
     background: rgba(255, 255, 255, 0.3);
 }
 #nav-bar #show-add-dialog {
