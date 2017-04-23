@@ -63,6 +63,8 @@ button {
 
     padding: 32px;
 
+    color: rgba(255, 255, 255, 0.87);
+
     background: #009688;
 }
 #nav-bar .labeled-input {
