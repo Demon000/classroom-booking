@@ -19,6 +19,24 @@
     display: block;
 }
 
+button {
+    min-width: 64px;
+
+    line-height: 36px;
+
+    margin: 0 4px;
+    padding: 0 8px;
+
+    font-family: inherit;
+    font-size: inherit;
+    text-align: center;
+    font-weight: 500;
+
+    border-radius: 2px;
+
+    cursor: pointer;
+}
+
 #app-bar {
     width: 100%;
     height: 64px;
