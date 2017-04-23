@@ -76,8 +76,6 @@ button {
 #nav-bar .labeled-input input {
     min-width: 256px;
 
-    color: rgba(255, 255, 255, 0.87);
-
     border-bottom: 1px solid rgba(255, 255, 255, 0.70);
 
     transition: border 0.25s ease-out;
@@ -86,7 +84,6 @@ button {
     border-bottom: 2px solid rgba(255, 255, 255, 1);
 }
 #nav-bar #rooms {
-    color: rgba(255, 255, 255, 0.87);
     line-height: 20px;
     font-size: 16px;
 
