@@ -17,6 +17,10 @@ var app = {
         duration: 10000
     }),
     eventsContainer: document.querySelector('#events'),
+    hourInput: document.querySelector('#hour'),
+    nameInput: document.querySelector('#name'),
+    descriptionInput: document.querySelector('#description'),
+    passwordInput: document.querySelector('#password'),
     get: {
         rooms: function(cbs, cbe) {
             request
