@@ -301,3 +301,8 @@ button {
 #add-dialog-container .dialog {
     width: 512px;
 }
+#add-dialog-container .labeled-input {
+    width: 100%;
+
+    margin-bottom: 18px;
+}
