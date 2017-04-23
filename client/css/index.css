@@ -262,6 +262,11 @@ button {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 
     overflow: hidden;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 .dialog .header {
     width: 100%;
@@ -305,15 +310,10 @@ button {
 .dialog .actions button:hover {
     background: rgba(0, 0, 0, 0.1);
 }
-#add-dialog-container .dialog {
+#add-dialog {
     width: 512px;
-
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
 }
-#add-dialog-container .labeled-input {
+#add-dialog .labeled-input {
     width: 100%;
 
     margin-bottom: 18px;
