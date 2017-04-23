@@ -245,6 +245,14 @@ button {
     left: 0;
 
     background: rgba(0, 0, 0, 0.25);
+
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.1s linear;
+}
+.dialog-container.visible {
+    visibility: visible;
+    opacity: 1;
 }
 .dialog {
     border-radius: 2px;
@@ -296,16 +304,6 @@ button {
 }
 .dialog .actions button:hover {
     background: rgba(0, 0, 0, 0.1);
-}
-
-#add-dialog-container {
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.1s linear;
-}
-#add-dialog-container.visible {
-    visibility: visible;
-    opacity: 1;
 }
 #add-dialog-container .dialog {
     width: 512px;
