@@ -84,6 +84,9 @@ button {
     border-bottom: 2px solid rgba(255, 255, 255, 1);
 }
 #nav-bar #rooms {
+    padding-bottom: 4px;
+    margin-bottom: 4px;
+
     line-height: 20px;
     font-size: 16px;
 
