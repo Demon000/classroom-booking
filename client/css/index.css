@@ -298,6 +298,15 @@ button {
     background: rgba(0, 0, 0, 0.1);
 }
 
+#add-dialog-container {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.1s linear;
+}
+#add-dialog-container.visible {
+    visibility: visible;
+    opacity: 1;
+}
 #add-dialog-container .dialog {
     width: 512px;
 
