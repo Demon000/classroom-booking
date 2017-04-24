@@ -1,50 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Rezervare sală de clasă</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+	<head>
+		<title>Rezervare sală de clasă</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="css/normalize.css" type="text/css">
-        <link rel="stylesheet" href="css/common.css" type="text/css">
-        <link rel="stylesheet" href="css/Calendar.css" type="text/css">
-        <link rel="stylesheet" href="css/index.css" type="text/css">
+		<link rel="stylesheet" href="css/normalize.css" type="text/css">
+		<link rel="stylesheet" href="css/common.css" type="text/css">
+		<link rel="stylesheet" href="css/Calendar.css" type="text/css">
+		<link rel="stylesheet" href="css/index.css" type="text/css">
 
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/superagent/3.5.2/superagent.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/superagent/3.5.2/superagent.js"></script>
 
-        <script type="text/javascript" src="js/utils.js"></script>
-        <script type="text/javascript" src="js/createElement.js"></script>
-        <script type="text/javascript" src="js/Emitter.js"></script>
-        <script type="text/javascript" src="js/Calendar.js"></script>
-        <script type="text/javascript" src="js/Selector.js"></script>
-        <script type="text/javascript" src="js/Dialog.js"></script>
-        <script type="text/javascript" src="js/Erroneous.js"></script>
-    </head>
-    <body>
-        <div id="app-bar">
-            <h1 class="title">Rezervare sală de clasă</h1>
-        </div>
-        <div id="nav-bar">
-            <div class="labeled-input">
-                <label for="date">Dată</label>
-                <input id="date" type="text" readonly="true">
-            </div>
-            <div class="labeled-input">
-                <label for="rooms">Clasă</label>
-                <div id="rooms"></div>
-            </div>
-            <i id="show-add-dialog" class="mdi mdi-plus"></i>
-        </div>
-        <div id="main">
-            <div class="event header">
-                <div class="hour">Oră</div>
-                <div class="name">Nume</div>
-                <div class="description">Descriere</div>
-            </div>
-            <div id="events"></div>
-        </div>
-        <div id="add-dialog-container" class="dialog-container">
-            <div id="add-dialog" class="dialog">
+		<script type="text/javascript" src="js/utils.js"></script>
+		<script type="text/javascript" src="js/createElement.js"></script>
+		<script type="text/javascript" src="js/Emitter.js"></script>
+		<script type="text/javascript" src="js/Calendar.js"></script>
+		<script type="text/javascript" src="js/Selector.js"></script>
+		<script type="text/javascript" src="js/Dialog.js"></script>
+		<script type="text/javascript" src="js/Erroneous.js"></script>
+	</head>
+	<body>
+		<div id="app-bar">
+			<h1 class="title">Rezervare sală de clasă</h1>
+		</div>
+		<div id="nav-bar">
+			<div class="labeled-input">
+				<label for="date">Dată</label>
+				<input id="date" type="text" readonly="true">
+			</div>
+			<div class="labeled-input">
+				<label for="rooms">Clasă</label>
+				<div id="rooms"></div>
+			</div>
+			<i id="show-add-dialog" class="mdi mdi-plus"></i>
+		</div>
+		<div id="main">
+			<div class="event header">
+				<div class="hour">Oră</div>
+				<div class="name">Nume</div>
+				<div class="description">Descriere</div>
+			</div>
+			<div id="events"></div>
+		</div>
+		<div id="add-dialog-container" class="dialog-container">
+			<div id="add-dialog" class="dialog">
 				<div class="header">
 					Adăugare rezervare
 				</div>
@@ -71,8 +71,8 @@
 					<button id="add-dialog-add" type="button">ADAUGĂ</button>
 				</div>
 			</div>
-        </div>
-        <div id="error"></div>
-        <script type="text/javascript" src="js/index.js"></script>
-    </body>
+		</div>
+		<div id="error"></div>
+		<script type="text/javascript" src="js/index.js"></script>
+	</body>
 </html>
