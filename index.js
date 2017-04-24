@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 
 const app = express();
 app.use(express.static('client'));
-app.use(bodyParser.json();
+app.use(bodyParser.json());
 
 const api = require('./server/api');
 app.use('/api', api);
