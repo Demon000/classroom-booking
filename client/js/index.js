@@ -149,6 +149,19 @@ var app = {
 					description: descriptionInput.value,
 					password: passwordInput.value
 				};
+
+				if(isNaN(data.hour)) {
+					app.error.show('Ora este invalidă!');
+				} else if(data.hour < 7 || data.hour > 20) {
+					app.error.show('Ora trebuie să fie între 7 și 20!')
+				} else if(!data.name) {
+				    app.error.show('Numele nu poate fi gol!');
+				} else if(!data.description) {
+				    app.error.show('Descrierea nu poate fi goală!');
+				} else if(!data.password) {
+				    app.error.show('Parola nu poate fi goală!');
+				}
+
 				app.post.events(data, function(events) {
 					console.log(events);
 					app.render.events(events);
