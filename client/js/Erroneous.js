@@ -4,7 +4,8 @@
         var container = o.container;
         var timed = false;
         var duration = 2000; 
-        
+        var timeout;
+
         if(o.timed) {
             timed = true;
         }
@@ -19,8 +20,11 @@
         ge.show = function(m, d) {
             container.innerHTML = m;
             container.classList.add('visible');
+            if(ge.isVisible() && timeout) {
+                clearTimeout(timeout);
+            }
             if(timed && d != 0) {
-                setTimeout(ge.clear, d || duration);
+                timeout = setTimeout(ge.clear, d || duration);
             }
         };
         ge.clear = function() {
