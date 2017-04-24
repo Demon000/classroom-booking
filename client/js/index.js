@@ -20,6 +20,7 @@ var app = {
         container: document.querySelector('#add-dialog-container'),
         template: document.querySelector('#add-dialog')
     }),
+    showAddDialog: document.querySelector('#show-add-dialog'),
     eventsContainer: document.querySelector('#events'),
     get: {
         rooms: function(cbs, cbe) {
