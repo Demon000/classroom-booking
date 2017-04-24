@@ -164,6 +164,7 @@ var app = {
 					app.post.events(data, function(events) {
 						console.log(events);
 						app.render.events(events);
+						app.addDialog.hide();
 					}, function(err, body) {
 						console.log(err);
 						if(body.code == 'INVPASS') {
