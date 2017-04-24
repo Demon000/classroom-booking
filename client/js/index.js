@@ -50,7 +50,7 @@ var app = {
     post: {
 		events: function(b, cbs, cbe) {
 			request
-			.get('api/events')
+			.post('api/events')
 			.send(b)
 			.end(function(err, res) {
 				if(err && cbe) {
