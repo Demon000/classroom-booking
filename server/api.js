@@ -11,14 +11,20 @@ db.defaults({
 const express = require('express');
 const router = express.Router();
 
+function filterEvents(q) {
+	let data = db.get('events').filter(q).sortBy([(e) => {
+		return parseInt(e.hour, 10);
+	}]).value();
+	return data;
+}
+
 router.get('/rooms', (req, res, next) => {
 	let data = config.rooms;
 	res.json(data);
 });
 router.get('/events' , (req, res, next) => {
 	let q = req.query;
-	let data = db.get('events').filter(q).value();
-	console.log(q, data);
+	let data = filterEvents(q);
 	res.json(data);
 });
 router.post('/events', (req, res, next) => {
@@ -56,12 +62,12 @@ router.post('/events', (req, res, next) => {
 		description: b.description
 	}).write();
 
-	let sameDay = db.get('events').filter({
+	let sameDay = filterEvents({
 		room: b.room,
 		year: b.year,
 		month: b.month,
 		day: b.day
-	}).sortBy('hour').value();
+	});
 	res.json(sameDay);
 });
 
