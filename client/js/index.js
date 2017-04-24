@@ -160,14 +160,14 @@ var app = {
 				    app.error.show('Descrierea nu poate fi goală!');
 				} else if(!data.password) {
 				    app.error.show('Parola nu poate fi goală!');
+				} else {
+					app.post.events(data, function(events) {
+						console.log(events);
+						app.render.events(events);
+					}, function(err) {
+						console.log(err);
+					});
 				}
-
-				app.post.events(data, function(events) {
-					console.log(events);
-					app.render.events(events);
-				}, function(err) {
-					console.log(err);
-				});
 			});
 
             var cancelButton = dialog.querySelector('#add-dialog-cancel');
