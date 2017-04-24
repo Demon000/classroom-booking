@@ -16,4 +16,7 @@ app.use(bodyParser.json({
 const api = require('./server/api');
 app.use('/api', api);
 
+const error = require('./server/error');
+app.use(error);
+
 app.listen(config.port);
