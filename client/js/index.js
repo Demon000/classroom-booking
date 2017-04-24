@@ -122,15 +122,6 @@ var app = {
             app.load.events(q, cb);
         }
     },
-    add: {
-		event: function(data) {
-			app.post.events(data, function(events) {
-				app.render.events(events);
-			}, function(err) {
-				console.log(err);
-			});
-		}
-    },
     init: function() {
         app.dateSelector.on('dateChange', function() {
             app.load.selectedEvents();
