@@ -24,6 +24,12 @@ router.get('/events' , (req, res, next) => {
 router.post('/events', (req, res, next) => {
 	let b = req.body;
 
+	for(var i in b) {
+		if(typeof b[i] == 'number') {
+			b[i] = b[i].toString();
+		}		
+	}
+
 	if(b.password != config.password) {
 		return next(new Error('INVPASS'));
 	}
