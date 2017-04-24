@@ -4,6 +4,10 @@ const errors = {
     'EVADDCON': {
         status: 409,
         message: 'An event at the same date and hour already exists.'
+    },
+    'INVPASS': {
+        status: 403,
+        message: 'An invalid password has been suplied.'
     }
 };
 
