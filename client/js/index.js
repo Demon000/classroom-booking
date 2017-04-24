@@ -16,6 +16,10 @@ var app = {
         timed: true,
         duration: 10000
     }),
+    addDialog: new Dialog({
+        container: document.querySelector('#add-dialog-container'),
+        template: document.querySelector('#add-dialog')
+    }),
     eventsContainer: document.querySelector('#events'),
     get: {
         rooms: function(cbs, cbe) {
