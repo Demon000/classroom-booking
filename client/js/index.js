@@ -46,6 +46,20 @@ var app = {
             });
         }
     },
+    post: {
+		events: function(b, cbs, cbe) {
+			request
+			.get('api/events')
+			.send(b)
+			.end(function(err, res) {
+				if(err && cbe) {
+					cbe(err);
+				} else {
+					cbs(res.body);
+				}
+			});
+		}
+    },
     render: {
         events: function(events) {
             while(app.eventsContainer.lastChild) {
