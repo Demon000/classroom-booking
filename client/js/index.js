@@ -164,8 +164,13 @@ var app = {
 					app.post.events(data, function(events) {
 						console.log(events);
 						app.render.events(events);
-					}, function(err) {
+					}, function(err, body) {
 						console.log(err);
+						if(body.code == 'INVPASS') {
+							app.error.show('Parola este incorectă!');
+						} else if(body.code == 'EVADDCON') {
+							app.error.show('Există deja o programare pentru această oră!');
+						}
 					});
 				}
 			});
