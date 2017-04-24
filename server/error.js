@@ -21,6 +21,7 @@ function handler(err, req, res, next) {
             code: code
         });
     } else {
+        console.log(code);
         next();
     }
 }
