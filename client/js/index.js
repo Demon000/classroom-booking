@@ -129,6 +129,38 @@ var app = {
         app.roomSelector.on('activeChange', function() {
             app.load.selectedEvents();
         });
+        app.addDialog.configure(function(dialog) {
+            var addButton = dialog.querySelector('#add-dialog-add');
+            var hourInput = dialog.querySelector('#hour');
+			var nameInput = dialog.querySelector('#name');
+			var descriptionInput = dialog.querySelector('#description');
+			var passwordInput = dialog.querySelector('#password');
+
+			addButton.addEventListener('click', function() {
+				var date = app.dateSelector.getDate();
+
+				var data = {
+					room: app.roomSelector.getActive(),
+					year: date.year,
+					month: date.month,
+					day: date.day,
+					hour: hourInput.value,
+					name: nameInput.value,
+					description: descriptionInput.value,
+					password: passwordInput.value
+				};
+				app.post.events(data, function(events) {
+					console.log(events);
+					app.render.events(events);
+				}, function(err) {
+					console.log(err);
+				});
+			});
+
+            var cancelButton = dialog.querySelector('#add-dialog-cancel');
+            cancelButton.addEventListener('click', app.addDialog.hide);
+        });
+        app.showAddDialog.addEventListener('click', app.addDialog.show);
     },
     preinit: function() {
         app.load.rooms(function() {
