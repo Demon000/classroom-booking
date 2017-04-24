@@ -28,7 +28,7 @@ var app = {
             .get('api/rooms')
             .end(function(err, res) {
                 if(err && cbe) {
-                    cbe(err);
+                    cbe(err, res.body);
                 } else {
                     cbs(res.body);
                 }
@@ -40,7 +40,7 @@ var app = {
             .query(q)
             .end(function(err, res) {
                 if(err && cbe) {
-                    cbe(err);
+                    cbe(err, res.body);
                 } else {
                     cbs(res.body);
                 }
@@ -54,7 +54,7 @@ var app = {
 			.send(b)
 			.end(function(err, res) {
 				if(err && cbe) {
-					cbe(err);
+					cbe(err, res.body);
 				} else {
 					cbs(res.body);
 				}
