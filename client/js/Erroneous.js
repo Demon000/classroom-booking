@@ -12,7 +12,10 @@
             timed = true;
             duration = o.duration;
         }
-        
+
+        ge.isVisible = function() {
+            return container.classList.contains('visible');
+        };
         ge.show = function(m, d) {
             container.innerHTML = m;
             container.classList.add('visible');
@@ -20,7 +23,6 @@
                 setTimeout(ge.clear, d || duration);
             }
         };
-        
         ge.clear = function() {
             container.classList.remove('visible');
             container.innerHTML = "";  
