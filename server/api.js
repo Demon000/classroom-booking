@@ -2,6 +2,8 @@
 
 const config = require('../config');
 
+const validator = require('validator');
+
 const lowdb = require('lowdb');
 const db = lowdb(config.dbPath);
 db.defaults({
@@ -34,16 +36,21 @@ function authorize(req, res, next) {
 	}
 	next();
 }
-
-router.post('/events', authorize, (req, res, next) => {
+function sanitize(req, res, next) {
 	let b = req.body;
-
 	for(var i in b) {
 		if(typeof b[i] == 'number') {
 			b[i] = b[i].toString();
-		}		
+		} else {
+			b[i] = validator.escape(b[i]);
+		}
 	}
+	next();
+}
 
+router.post('/events', authorize, sanitize, (req, res, next) => {
+	let b = req.body;
+	console.log(b);
 	let sameHour = db.get('events').find({
 		room: b.room,
 		year: b.year,
