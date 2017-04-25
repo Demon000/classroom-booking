@@ -68,13 +68,15 @@ button {
 	background: #009688;
 }
 #nav-bar .labeled-input {
+	min-width: 256px;
+
 	margin: 0 24px 0 0;
 }
 #nav-bar .labeled-input label {
 	color: rgba(255, 255, 255, 0.70);
 }
 #nav-bar .labeled-input input {
-	min-width: 256px;
+	width: 100%;	
 
 	border-bottom: 1px solid rgba(255, 255, 255, 0.70);
 
@@ -317,4 +319,10 @@ button {
 	width: 100%;
 
 	margin-bottom: 18px;
+}
+
+@media all and (max-width: 756px) {
+	#nav-bar .labeled-input {
+		width: 100%;
+	}
 }
