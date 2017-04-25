@@ -27,17 +27,21 @@ router.get('/events' , (req, res, next) => {
 	let data = filterEvents(q);
 	res.json(data);
 });
-router.post('/events', (req, res, next) => {
+
+function authorize(req, res, next) {
+	if(req.body.password != config.password) {
+		return next(new Error('INVPASS'));
+	}
+	next();
+}
+
+router.post('/events', authorize, (req, res, next) => {
 	let b = req.body;
 
 	for(var i in b) {
 		if(typeof b[i] == 'number') {
 			b[i] = b[i].toString();
 		}		
-	}
-
-	if(b.password != config.password) {
-		return next(new Error('INVPASS'));
 	}
 
 	let sameHour = db.get('events').find({
