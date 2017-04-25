@@ -53,7 +53,7 @@ function validate(req, res, next) {
 	if(config.rooms.indexOf(b.room) == -1) {
 		valid = false;
 	}
-	const numeric = ['year', 'month', 'day', hour];
+	const numeric = ['year', 'month', 'day', 'hour'];
 	valid = numeric.every(i => validator.isNumeric(b[i]));
 	if(b.hour < 7 || b.hour > 20) {
 		valid = false;
