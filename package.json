@@ -24,6 +24,7 @@
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
     "lowdb": "^0.16.2",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "validator": "^7.0.0"
   }
 }
