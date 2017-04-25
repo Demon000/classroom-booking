@@ -325,5 +325,7 @@ button {
 @media all and (max-width: 756px) {
 	#nav-bar .labeled-input {
 		width: 100%;
+
+		margin: 0 0 24px 0;
 	}
 }
