@@ -47,8 +47,23 @@ function sanitize(req, res, next) {
 	}
 	next();
 }
-
-router.post('/events', authorize, sanitize, (req, res, next) => {
+function validate(req, res, next) {
+	let b = req.body;
+	let valid = true;
+	if(config.rooms.indexOf(b.room) == -1) {
+		valid = false;
+	}
+	const numeric = ['year', 'month', 'day', hour];
+	valid = numeric.every(i => validator.isNumeric(b[i]));
+	if(b.hour < 7 || b.hour > 20) {
+		valid = false;
+	}
+	if(!valid) {
+		return next(new Error('INVDATA'));
+	}
+	next();
+}
+router.post('/events', authorize, sanitize, validate, (req, res, next) => {
 	let b = req.body;
 	console.log(b);
 	let sameHour = db.get('events').find({
