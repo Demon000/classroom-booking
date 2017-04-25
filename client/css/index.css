@@ -72,6 +72,9 @@ button {
 
 	margin: 0 24px 0 0;
 }
+#nav-bar .labeled-input:last-of-type {
+	margin: 0;
+}
 #nav-bar .labeled-input label {
 	color: rgba(255, 255, 255, 0.70);
 }
