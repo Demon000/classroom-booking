@@ -2,16 +2,13 @@
 
 const errors = {
 	'EVADDCON': {
-		status: 409,
-		message: 'An event at the same date and hour already exists.'
+		status: 409
 	},
 	'INVPASS': {
-		status: 403,
-		message: 'An invalid password has been suplied.'
+		status: 403
 	},
 	'INVDATA': {
-		status: 422,
-		message: 'Invalid data.'
+		status: 422
 	}
 };
 
