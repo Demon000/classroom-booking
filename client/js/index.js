@@ -14,7 +14,11 @@ var app = {
 	error: new Erroneous({
 		container: document.querySelector('#error'),
 		timed: true,
-		duration: 10000
+		duration: 10000,
+		messages: {
+			'EVADDCON': 'Există deja o programare la această oră!',
+			'INVPASS': 'Parola este incorectă!',
+		}
 	}),
 	addDialog: {
 		container: document.querySelector('#add-dialog-container'),
@@ -64,12 +68,7 @@ var app = {
 						app.render.events(events);
 						app.addDialog.hide();
 					}, function(err, body) {
-						console.log(err);
-						if(body.code == 'INVPASS') {
-							app.error.show('Parola este incorectă!');
-						} else if(body.code == 'EVADDCON') {
-							app.error.show('Există deja o programare pentru această oră!');
-						}
+						app.error.show(body.code);
 					});
 				}
 			});
