@@ -8,6 +8,10 @@ const errors = {
 	'INVPASS': {
 		status: 403,
 		message: 'An invalid password has been suplied.'
+	},
+	'INVDATA': {
+		status: 422,
+		message: 'Invalid data.'
 	}
 };
 
