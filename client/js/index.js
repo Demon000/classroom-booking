@@ -18,6 +18,8 @@ var app = {
 		messages: {
 			'EVADDCON': 'Există deja o programare la această oră!',
 			'INVPASS': 'Parola este incorectă!',
+			'INVHOUR': 'Ora trebuie să fie între 7 și 20!',
+			'EMPTYFLD': 'Toate câmpurile sunt obligatorii!'
 		}
 	}),
 	addDialog: {
