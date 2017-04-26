@@ -9,6 +9,12 @@ const errors = {
 	},
 	'INVDATA': {
 		status: 422
+	},
+	'INVHOUR': {
+		status: 422
+	},
+	'EMPTYFLD': {
+		status: 422
 	}
 };
 
