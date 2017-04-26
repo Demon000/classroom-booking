@@ -19,11 +19,9 @@ function handler(err, req, res, next) {
 	let code = err.message;
 	if(errors[code]) {
 		let error = errors[code];
+		error.code = code;
 		res.status(error.status);
-		res.json({
-			message: error.message,
-			code: code
-		});
+		res.json(error);
 	} else {
 		console.log(code);
 		next();
