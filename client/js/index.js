@@ -54,23 +54,12 @@ var app = {
 					description: descriptionInput.value,
 					password: passwordInput.value
 				};
-
-				if(data.hour < 7 || data.hour > 20) {
-					app.error.show('Ora trebuie să fie între 7 și 20!')
-				} else if(!data.name) {
-					app.error.show('Numele nu poate fi gol!');
-				} else if(!data.description) {
-					app.error.show('Descrierea nu poate fi goală!');
-				} else if(!data.password) {
-					app.error.show('Parola nu poate fi goală!');
-				} else {
-					app.post.events(data, function(events) {
-						app.render.events(events);
-						app.addDialog.hide();
-					}, function(err, body) {
-						app.error.show(body.code);
-					});
-				}
+				app.post.events(data, function(events) {
+					app.render.events(events);
+					app.addDialog.hide();
+				}, function(err, body) {
+					app.error.show(body.code);
+				});
 			});
 		}
 	},
