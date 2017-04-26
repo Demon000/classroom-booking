@@ -30,6 +30,7 @@ var app = {
 		},
 		hide: function() {
 			app.addDialog.container.classList.remove('visible');
+			app.error.clear();
 		},
 		init: function() {
 			var dialog =  this.element;
