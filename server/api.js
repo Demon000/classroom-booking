@@ -71,7 +71,6 @@ function validate(req, res, next) {
 }
 router.post('/events', authorize, sanitize, validate, (req, res, next) => {
 	let b = req.body;
-	console.log(b);
 	let sameHour = db.get('events').find({
 		room: b.room,
 		year: b.year,
