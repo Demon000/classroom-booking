@@ -16,10 +16,65 @@ var app = {
 		timed: true,
 		duration: 10000
 	}),
-	addDialog: new Dialog({
+	addDialog: {
 		container: document.querySelector('#add-dialog-container'),
-		template: document.querySelector('#add-dialog')
-	}),
+		element: document.querySelector('#add-dialog'),
+		show: function() {
+			app.addDialog.container.classList.add('visible');
+		},
+		hide: function() {
+			app.addDialog.container.classList.remove('visible');
+		},
+		init: function() {
+			var dialog =  this.element;
+			var hourInput = dialog.querySelector('#hour');
+			var nameInput = dialog.querySelector('#name');
+			var descriptionInput = dialog.querySelector('#description');
+			var passwordInput = dialog.querySelector('#password');
+
+			var cancelButton = dialog.querySelector('#add-dialog-cancel');
+			cancelButton.addEventListener('click', app.addDialog.hide);
+			var addButton = dialog.querySelector('#add-dialog-add');
+			addButton.addEventListener('click', function() {
+				var date = app.dateSelector.getDate();
+
+				var data = {
+					room: app.roomSelector.getActive(),
+					year: date.year,
+					month: date.month,
+					day: date.day,
+					hour: hourInput.value,
+					name: nameInput.value,
+					description: descriptionInput.value,
+					password: passwordInput.value
+				};
+
+				if(isNaN(data.hour)) {
+					app.error.show('Ora este invalidă!');
+				} else if(data.hour < 7 || data.hour > 20) {
+					app.error.show('Ora trebuie să fie între 7 și 20!')
+				} else if(!data.name) {
+					app.error.show('Numele nu poate fi gol!');
+				} else if(!data.description) {
+					app.error.show('Descrierea nu poate fi goală!');
+				} else if(!data.password) {
+					app.error.show('Parola nu poate fi goală!');
+				} else {
+					app.post.events(data, function(events) {
+						app.render.events(events);
+						app.addDialog.hide();
+					}, function(err, body) {
+						console.log(err);
+						if(body.code == 'INVPASS') {
+							app.error.show('Parola este incorectă!');
+						} else if(body.code == 'EVADDCON') {
+							app.error.show('Există deja o programare pentru această oră!');
+						}
+					});
+				}
+			});
+		}
+	},
 	showAddDialog: document.querySelector('#show-add-dialog'),
 	eventsContainer: document.querySelector('#events'),
 	get: {
@@ -129,56 +184,7 @@ var app = {
 		app.roomSelector.on('activeChange', function() {
 			app.load.selectedEvents();
 		});
-		app.addDialog.configure(function(dialog) {
-			var addButton = dialog.querySelector('#add-dialog-add');
-			var hourInput = dialog.querySelector('#hour');
-			var nameInput = dialog.querySelector('#name');
-			var descriptionInput = dialog.querySelector('#description');
-			var passwordInput = dialog.querySelector('#password');
-
-			addButton.addEventListener('click', function() {
-				var date = app.dateSelector.getDate();
-
-				var data = {
-					room: app.roomSelector.getActive(),
-					year: date.year,
-					month: date.month,
-					day: date.day,
-					hour: hourInput.value,
-					name: nameInput.value,
-					description: descriptionInput.value,
-					password: passwordInput.value
-				};
-
-				if(isNaN(data.hour)) {
-					app.error.show('Ora este invalidă!');
-				} else if(data.hour < 7 || data.hour > 20) {
-					app.error.show('Ora trebuie să fie între 7 și 20!')
-				} else if(!data.name) {
-					app.error.show('Numele nu poate fi gol!');
-				} else if(!data.description) {
-					app.error.show('Descrierea nu poate fi goală!');
-				} else if(!data.password) {
-					app.error.show('Parola nu poate fi goală!');
-				} else {
-					app.post.events(data, function(events) {
-						console.log(events);
-						app.render.events(events);
-						app.addDialog.hide();
-					}, function(err, body) {
-						console.log(err);
-						if(body.code == 'INVPASS') {
-							app.error.show('Parola este incorectă!');
-						} else if(body.code == 'EVADDCON') {
-							app.error.show('Există deja o programare pentru această oră!');
-						}
-					});
-				}
-			});
-
-			var cancelButton = dialog.querySelector('#add-dialog-cancel');
-			cancelButton.addEventListener('click', app.addDialog.hide);
-		});
+		app.addDialog.init();
 		app.showAddDialog.addEventListener('click', app.addDialog.show);
 	},
 	preinit: function() {
