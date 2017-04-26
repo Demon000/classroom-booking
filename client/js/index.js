@@ -53,9 +53,7 @@ var app = {
 					password: passwordInput.value
 				};
 
-				if(isNaN(data.hour)) {
-					app.error.show('Ora este invalidă!');
-				} else if(data.hour < 7 || data.hour > 20) {
+				if(data.hour < 7 || data.hour > 20) {
 					app.error.show('Ora trebuie să fie între 7 și 20!')
 				} else if(!data.name) {
 					app.error.show('Numele nu poate fi gol!');
