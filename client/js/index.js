@@ -34,10 +34,10 @@ var app = {
 		},
 		init: function() {
 			var dialog =  this.element;
-			var hourInput = dialog.querySelector('#hour');
-			var nameInput = dialog.querySelector('#name');
-			var descriptionInput = dialog.querySelector('#description');
-			var passwordInput = dialog.querySelector('#password');
+			var hourInput = dialog.querySelector('#add-dialog-hour');
+			var nameInput = dialog.querySelector('#add-dialog-name');
+			var descriptionInput = dialog.querySelector('#add-dialog-description');
+			var passwordInput = dialog.querySelector('#add-dialog-password');
 
 			var cancelButton = dialog.querySelector('#add-dialog-cancel');
 			cancelButton.addEventListener('click', app.addDialog.hide);
