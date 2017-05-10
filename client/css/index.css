@@ -191,7 +191,7 @@ button {
 	font-size: 0;
 }
 #main .event:nth-child(even) {
-	background: rgba(0, 0, 0, 0.025);
+	background: rgba(0, 0, 0, 0.1);
 }
 #main .event > * {
 	display: inline-block;
