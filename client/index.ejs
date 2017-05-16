@@ -80,5 +80,8 @@
 		</div>
 		<div id="error"></div>
 		<script type="text/javascript" src="js/index.js"></script>
+		<% if(locals.admin) {%>
+			<script type="text/javascript" src="js/admin.js"></script>
+		<% } %>
 	</body>
 </html>
