@@ -34,6 +34,9 @@
 				<div id="rooms"></div>
 			</div>
 			<i id="show-add-dialog" class="mdi mdi-plus fab"></i>
+			<% if(locals.admin) {%>
+				<i id="show-delete-dialog" class="mdi mdi-delete fab"></i>
+			<% } %>
 		</div>
 		<div id="main">
 			<div class="event header">
