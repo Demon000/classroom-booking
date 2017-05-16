@@ -39,6 +39,27 @@ button {
 	cursor: pointer;
 }
 
+.fab {
+	width: 48px;
+	height: 48px;
+	line-height: 48px;
+
+	border-radius: 50%;
+
+	font-size: 24px;
+	text-align: center;
+
+	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+
+	cursor: pointer;
+
+	transition: box-shadow 0.1s ease-out;
+}
+
+.fab:hover {
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
 #app-bar {
 	width: 100%;
 	height: 64px;
@@ -125,32 +146,17 @@ button {
 
 	background: rgba(255, 255, 255, 0.3);
 }
-#nav-bar #show-add-dialog {
-	width: 48px;
-	height: 48px;
-	line-height: 48px;
 
+#nav-bar #show-add-dialog {
 	position: absolute;
 	bottom: -24px;
 	right: 24px;
 
-	border-radius: 50%;
-
 	background: #fff;
 
 	color: rgba(0, 0, 0, 0.87);
-	font-size: 24px;
-	text-align: center;
-
-	box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-
-	cursor: pointer;
-
-	transition: box-shadow 0.1s ease-out;
 }
-#nav-bar #show-add-dialog:hover {
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-}
+
 #nav-bar::after {
 	content: 'empty';
 
