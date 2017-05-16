@@ -20,6 +20,11 @@ app.use(express.static(clientDir));
 app.get('/', function(req, res) {
     res.render(clientDir + '/index');
 });
+app.get('/admin', function(req, res) {
+    res.render(clientDir + '/index', {
+        admin: true
+    });
+});
 
 const error = require('./server/error');
 app.use(error);
