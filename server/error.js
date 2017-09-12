@@ -15,6 +15,9 @@ const errors = {
 	},
 	'EMPTYFLD': {
 		status: 422
+	},
+	'EVDELNEX': {
+		status: 404
 	}
 };
 

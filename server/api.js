@@ -102,4 +102,30 @@ router.post('/events', authorize, sanitize, validate, (req, res, next) => {
 	res.json(sameDay);
 });
 
+router.delete('/events', authorize, sanitize, validate, (req, res, next) => {
+	let b = req.body;
+	let data = {
+		room: b.room,
+		year: b.year,
+		month: b.month,
+		day: b.day,
+		hour: b.hour
+	};
+
+	let sameHour = db.get('events').find(data).value();
+	if (!sameHour) {
+		return next(new Error('EVDELNEX'));
+	}
+
+	db.get('events').remove(data).write();
+
+	let sameDay = filterEvents({
+		room: b.room,
+		year: b.year,
+		month: b.month,
+		day: b.day
+	});
+	res.json(sameDay);
+});
+
 module.exports = router;
