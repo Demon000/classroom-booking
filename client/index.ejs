@@ -37,6 +37,9 @@
 				<div id="rooms"></div>
 			</div>
 			<i id="show-add-dialog" class="mdi mdi-plus fab"></i>
+			<% if(!locals.admin) {%>
+				<a id="admin-link" class="mdi mdi-key fab" href="/admin"></a>
+			<% } %>			
 			<% if(locals.admin) {%>
 				<i id="show-delete-dialog" class="mdi mdi-delete fab"></i>
 			<% } %>

@@ -165,6 +165,15 @@ button {
 
 	color: rgba(255, 255, 255, 0.87);
 }
+#nav-bar #admin-link {
+	position: absolute;
+	bottom: -24px;
+	right: 96px;
+
+	background: #ffeb3b;
+
+	color: rgba(0, 0, 0, 0.87);	
+}
 
 #nav-bar::after {
 	content: 'empty';
