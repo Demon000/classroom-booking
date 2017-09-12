@@ -1,9 +1,0 @@
-#nav-bar #show-delete-dialog {
-	position: absolute;
-	bottom: -24px;
-	right: 96px;
-
-	background: #f44336;
-
-	color: rgba(255, 255, 255, 0.87);
-}
