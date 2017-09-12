@@ -1,71 +1,72 @@
 var request = superagent;
-var app = {
-	dateSelector: new Calendar({
-		input: document.querySelector('#date'),
-		language: {
-			month: ['Ianuarie', 'Februarie', 'Martie', 'Aprilie', 'Mai', 'Iunie', 'Iulie', 'August', 'Septembrie', 'Octombrie', 'Noiembrie', 'Decembrie'],
-			weekday: ['Luni', 'Marți', 'Miercuri', 'Joi', 'Vineri', 'Sâmbătă', 'Duminică'],
-			w : ['L', 'M', 'M', 'J', 'V', 'S', 'D']
-		}
-	}),
-	roomSelector: new Selector({
-		container: document.querySelector('#rooms')
-	}),
-	error: new Erroneous({
-		container: document.querySelector('#error'),
-		timed: true,
-		duration: 10000,
-		messages: {
-			'EVADDCON': 'Există deja o programare la această oră!',
-			'INVPASS': 'Parola este incorectă!',
-			'INVHOUR': 'Ora trebuie să fie între 7 și 20!',
-			'EMPTYFLD': 'Toate câmpurile sunt obligatorii!'
-		}
-	}),
-	addDialog: {
-		container: document.querySelector('#add-dialog-container'),
-		element: document.querySelector('#add-dialog'),
-		show: function() {
-			app.addDialog.container.classList.add('visible');
-		},
-		hide: function() {
-			app.addDialog.container.classList.remove('visible');
-			app.error.clear();
-		},
-		init: function() {
-			var dialog =  this.element;
-			var hourInput = dialog.querySelector('#add-dialog-hour');
-			var nameInput = dialog.querySelector('#add-dialog-name');
-			var descriptionInput = dialog.querySelector('#add-dialog-description');
-			var passwordInput = dialog.querySelector('#add-dialog-password');
 
-			var cancelButton = dialog.querySelector('#add-dialog-cancel');
-			cancelButton.addEventListener('click', app.addDialog.hide);
-			var addButton = dialog.querySelector('#add-dialog-add');
-			addButton.addEventListener('click', function() {
-				var date = app.dateSelector.getDate();
+var dateSelector = new Calendar({
+	input: document.querySelector('#date'),
+	language: {
+		month: ['Ianuarie', 'Februarie', 'Martie', 'Aprilie', 'Mai', 'Iunie', 'Iulie', 'August', 'Septembrie', 'Octombrie', 'Noiembrie', 'Decembrie'],
+		weekday: ['Luni', 'Marți', 'Miercuri', 'Joi', 'Vineri', 'Sâmbătă', 'Duminică'],
+		w : ['L', 'M', 'M', 'J', 'V', 'S', 'D']
+	}
+});
 
-				var data = {
-					room: app.roomSelector.getActive(),
-					year: date.year,
-					month: date.month,
-					day: date.day,
-					hour: hourInput.value,
-					name: nameInput.value,
-					description: descriptionInput.value,
-					password: passwordInput.value
-				};
-				app.post.events(data, function(events) {
-					app.render.events(events);
-					app.addDialog.hide();
-				}, function(err, body) {
-					app.error.show(body.code);
-				});
-			});
-		}
-	},
-	showAddDialog: document.querySelector('#show-add-dialog'),
-	eventsContainer: document.querySelector('#events'),
+var roomSelector = new Selector({
+	container: document.querySelector('#rooms')
+});
+
+var error = new Erroneous({
+	container: document.querySelector('#error'),
+	timed: true,
+	duration: 10000,
+	messages: {
+		'EVADDCON': 'Există deja o programare la această oră!',
+		'INVPASS': 'Parola este incorectă!',
+		'INVHOUR': 'Ora trebuie să fie între 7 și 20!',
+		'EMPTYFLD': 'Toate câmpurile sunt obligatorii!'
+	}
+});
+
+var showAddDialogButton = document.querySelector('#show-add-dialog');
+var addDialogContainer = document.querySelector('#add-dialog-container');
+var addDialogElement = document.querySelector('#add-dialog');
+function addDialogShow() {
+	addDialogContainer.classList.add('visible');
+}
+function addDialogHide() {
+	addDialogContainer.classList.remove('visible');
+	error.clear();
+}
+function addDialogInit() {
+	var hourInput = addDialogElement.querySelector('#add-dialog-hour');
+	var nameInput = addDialogElement.querySelector('#add-dialog-name');
+	var descriptionInput = addDialogElement.querySelector('#add-dialog-description');
+	var passwordInput = addDialogElement.querySelector('#add-dialog-password');
+
+	var cancelButton = addDialogElement.querySelector('#add-dialog-cancel');
+	cancelButton.addEventListener('click', addDialogHide);
+	var addButton = addDialogElement.querySelector('#add-dialog-add');
+	addButton.addEventListener('click', function() {
+		var date = dateSelector.getDate();
+
+		var data = {
+			room: roomSelector.getActive(),
+			year: date.year,
+			month: date.month,
+			day: date.day,
+			hour: hourInput.value,
+			name: nameInput.value,
+			description: descriptionInput.value,
+			password: passwordInput.value
+		};
+		requests.post.events(data, function(events) {
+			renderEvents(events);
+			addDialogHide();
+		}, function(err, body) {
+			error.show(body.code);
+		});
+	});
+}
+
+var  requests = {
 	get: {
 		rooms: function(cbs, cbe) {
 			request
@@ -104,83 +105,84 @@ var app = {
 				}
 			});
 		}
-	},
-	render: {
-		events: function(events) {
-			while(app.eventsContainer.lastChild) {
-				app.eventsContainer.removeChild(app.eventsContainer.lastChild);
-			}
-			events.forEach(function(event) {
-				var eventElement = createElement('div', {
-					class: 'event',
-					parent: app.eventsContainer
-				});
-				createElement('div', {
-					class: 'hour',
-					content: event.hour,
-					parent: eventElement
-				});
-				createElement('div', {
-					class: 'name',
-					content: event.name,
-					parent: eventElement
-				});
-				createElement('div', {
-					class: 'description',
-					content: event.description,
-					parent: eventElement
-				});
-			});
-		}
-	},
-	load: {
-		rooms: function(cb) {
-			app.get.rooms(function(rooms) {
-				app.roomSelector.setOptions(rooms, rooms[0]);
-				if(cb) {
-					cb();
-				}
-			}, function(err) {
-				console.log(err);
-			});
-		},
-		events: function(q, cb) {
-			app.get.events(q, function(events) {
-				app.render.events(events);
-				if(cb) {
-					cb();
-				}
-			}, function(err) {
-				console.log(err);
-			});
-		},
-		selectedEvents: function(cb) {
-			var room = app.roomSelector.getActive();
-			var date = app.dateSelector.getDate();
-			var q = {
-				room: room,
-				year: date.year,
-				month: date.month,
-				day: date.day
-			};
-			app.load.events(q, cb);
-		}
-	},
-	init: function() {
-		app.dateSelector.on('dateChange', function() {
-			app.load.selectedEvents();
-		});
-		app.roomSelector.on('activeChange', function() {
-			app.load.selectedEvents();
-		});
-		app.addDialog.init();
-		app.showAddDialog.addEventListener('click', app.addDialog.show);
-	},
-	preinit: function() {
-		app.load.rooms(function() {
-			app.load.selectedEvents(app.init);
-		})
 	}
 };
 
-app.preinit();
+var eventsContainer = document.querySelector('#events');
+function renderEvents(events) {
+	while(eventsContainer.lastChild) {
+		eventsContainer.removeChild(eventsContainer.lastChild);
+	}
+	events.forEach(function(event) {
+		var eventElement = createElement('div', {
+			class: 'event',
+			parent: eventsContainer
+		});
+		createElement('div', {
+			class: 'hour',
+			content: event.hour,
+			parent: eventElement
+		});
+		createElement('div', {
+			class: 'name',
+			content: event.name,
+			parent: eventElement
+		});
+		createElement('div', {
+			class: 'description',
+			content: event.description,
+			parent: eventElement
+		});
+	});
+}
+function loadEvents(q, cb) {
+	requests.get.events(q, function(events) {
+		renderEvents(events);
+		if(cb) {
+			cb();
+		}
+	}, function(err) {
+		console.log(err);
+	});
+}
+function loadSelectedEvents(cb) {
+	var room = roomSelector.getActive();
+	var date = dateSelector.getDate();
+	var q = {
+		room: room,
+		year: date.year,
+		month: date.month,
+		day: date.day
+	};
+	loadEvents(q, cb);
+}
+
+function loadRooms(cb) {
+	requests.get.rooms(function(rooms) {
+		roomSelector.setOptions(rooms, rooms[0]);
+		if(cb) {
+			cb();
+		}
+	}, function(err) {
+		console.log(err);
+	});
+}
+
+function init() {
+	dateSelector.on('dateChange', function() {
+		loadSelectedEvents();
+	});
+	roomSelector.on('activeChange', function() {
+		loadSelectedEvents();
+	});
+	addDialogInit();
+	showAddDialogButton.addEventListener('click', addDialogShow);
+}
+
+function preinit() {
+	loadRooms(function() {
+		loadSelectedEvents(init);
+	});
+}
+
+preinit();
