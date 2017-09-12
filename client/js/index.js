@@ -21,7 +21,8 @@ var error = new Erroneous({
 		'EVADDCON': 'Există deja o programare la această oră!',
 		'INVPASS': 'Parola este incorectă!',
 		'INVHOUR': 'Ora trebuie să fie între 7 și 20!',
-		'EMPTYFLD': 'Toate câmpurile sunt obligatorii!'
+		'EMPTYFLD': 'Toate câmpurile sunt obligatorii!',
+		'EVDELNEX': 'Nu există nicio programare la aceasă oră!'
 	}
 });
 
