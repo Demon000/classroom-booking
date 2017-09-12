@@ -331,10 +331,10 @@ button {
 .dialog .actions button:hover {
 	background: rgba(0, 0, 0, 0.1);
 }
-#add-dialog {
+#add-dialog, #delete-dialog {
 	width: 512px;
 }
-#add-dialog .labeled-input {
+#add-dialog .labeled-input, #delete-dialog .labeled-input {
 	width: 100%;
 
 	margin-bottom: 18px;
@@ -346,7 +346,7 @@ button {
 
 		margin: 0 0 24px 0;
 	}
-	#add-dialog {
+	#add-dialog, #delete-dialog {
 		width: 100%;
 		height: 100%;
 	}

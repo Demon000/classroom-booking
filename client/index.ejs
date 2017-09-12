@@ -78,6 +78,29 @@
 				</div>
 			</div>
 		</div>
+		<% if(locals.admin) {%>
+			<div id="delete-dialog-container" class="dialog-container">
+				<div id="delete-dialog" class="dialog">
+					<div class="header">
+						Ștergere rezervare
+					</div>
+					<div class="main">
+						<div class="labeled-input">
+							<label for="delete-dialog-hour">Oră</label>
+							<input id="delete-dialog-hour" type="number" required="true" min="7" max="20" value="14">
+						</div>
+						<div class="labeled-input">
+							<label for="delete-dialog-password">Parolă</label>
+							<input id="delete-dialog-password" type="password" required="true">
+						</div>
+					</div>
+					<div class="actions">
+						<button id="delete-dialog-cancel" type="button">ANULEAZĂ</button>
+						<button id="delete-dialog-delete" type="button">ȘTERGE</button>
+					</div>
+				</div>
+			</div>
+		<% } %>
 		<div id="error"></div>
 		<script type="text/javascript" src="js/index.js"></script>
 		<% if(locals.admin) {%>

@@ -106,6 +106,20 @@ var  requests = {
 				}
 			});
 		}
+	},
+	delete: {
+		events: function(b, cbs, cbe) {
+			request
+			.delete('api/events')
+			.send(b)
+			.end(function(err, res) {
+				if(err && cbe) {
+					cbe(err, res.body);
+				} else {
+					cbs(res.body);
+				}
+			});
+		}
 	}
 };
 
