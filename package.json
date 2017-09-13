@@ -4,7 +4,8 @@
   "description": "A simple classroom booking app.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "start-eng": "nodemon index.js"
   },
   "repository": {
     "type": "git",
